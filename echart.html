@@ -14,24 +14,58 @@
     <script type="text/javascript">
         // based on prepared DOM, initialize echarts instance
         var myChart1 = echarts.init(document.getElementById('chart1'));
+		
+		// Create new Array
+		var newArry = [];
+		
+		for (var i=1;i<500;i++) {
+			newArry.push(i);
+		}
+		
+		console.log(newArry);
+		
+		function shuffle(array) {
+			var currentIndex = array.length, temporaryValue, randomIndex;
 
+			// While there remain elements to shuffle...
+			while (0 !== currentIndex) {
+
+			// Pick a remaining element...
+			randomIndex = Math.floor(Math.random() * currentIndex);
+			currentIndex -= 1;
+
+			// And swap it with the current element.
+			temporaryValue = array[currentIndex];
+			array[currentIndex] = array[randomIndex];
+			array[randomIndex] = temporaryValue;
+			}
+
+			return array;
+		}
+		
+		var rndm = shuffle(newArry);
+		
+		console.log(rndm);
+		
         // specify chart configuration item and data
         var option = {
             title: {
-                text: 'Line chart example'
+                text: 'Ajay Line chart example'
             },
             tooltip: {},
             legend: {
                 data:['Sales']
             },
             xAxis: {
-                data: ["shirt","cardign","chiffon shirt","pants","heels","socks"]
+			/*	data: ["shirt","cardign","chiffon shirt","pants","heels","socks"] */
+				data: newArry
             },
             yAxis: {},
             series: [{
                 name: 'Sales',
-                type: 'line',
-                data: [5, 20, 36, 10, 10, 20]
+                type: 'scatter',
+            /*    data: [5, 20, 36, 10, 10, 20]  */
+				data: rndm
             }]
         };
 
@@ -77,10 +111,12 @@
                 data:['Sales']
             },
             xAxis: {
+				show: false, 
                 data: ["shirt","cardign","chiffon shirt","pants","heels","socks","Hat"]
             },
             yAxis: {},
             series: [{
+				show: false,
                 name: 'Sales',
                 type: 'pie',
                 data: [5, 20, 36, 10, 10, 20, 50]
