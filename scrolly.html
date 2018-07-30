@@ -168,8 +168,8 @@
 	</section>
 	<section id='scroll'>
 		<div class='scroll__graphic'>
-			<div class='chart'>
-				<p>0</p>
+			<div class='chart' style="width: 600px;height:400px;">
+			<!-- 	<p>0</p> -->
 			</div>
 		</div>
 		<div class='scroll__text'>
@@ -240,7 +240,7 @@
 			})
 
 			// update graphic based on step
-			chart.select('p').text(response.index + 1)
+			// chart.select('p').text(response.index + 1)
 		}
 
 		function handleContainerEnter(response) {
@@ -288,6 +288,33 @@
 		// http://www.tutorialsteacher.com/d3js/create-svg-chart-in-d3js
 		// https://www.tutorialspoint.com/d3js/d3js_data_join.htm
 	</script>
+	<script type="text/javascript">
+        // based on prepared DOM, initialize echarts instance
+        var myChart1 = echarts.init(document.getElementById('chart'));
+
+        // specify chart configuration item and data
+        var option = {
+            title: {
+                text: 'Bar chart example'
+            },
+            tooltip: {},
+            legend: {
+                data:['Sales']
+            },
+            xAxis: {
+                data: ["shirt","cardign","chiffon shirt","pants","heels","socks","Hat"]
+            },
+            yAxis: {},
+            series: [{
+                name: 'Sales',
+                type: 'bar',
+                data: [5, 20, 36, 10, 10, 20, 50]
+            }]
+        };
+
+        // use configuration item and data specified to show chart
+        myChart1.setOption(option);
+    </script>		
 </body>
 
 </html>
